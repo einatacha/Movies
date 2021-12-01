@@ -1,6 +1,5 @@
-package com.example.Movies.entities.users;
+package com.example.Movies.entities;
 
-import com.example.Movies.enums.ProfileEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,13 +27,13 @@ public class Category {
         private String language;
 
         @Column(name = "active")
-        private String active;
+        private boolean active = true;
 
 
-        @OneToMany
-        private Movies movies;
+        @ManyToOne
+        @JoinColumn(name = "language_id")
+        private Languages languages;
 
-        @ManyToOne Languages languages;
 
     }
 

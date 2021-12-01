@@ -1,6 +1,5 @@
-package com.example.Movies.entities.users;
+package com.example.Movies.entities;
 
-import com.example.Movies.enums.ProfileEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,17 +24,18 @@ public class Movies {
         @Column(name = "title")
         private String title;
 
-        @Column(name = "synopsis")
-        private String synopsis;
-
         @Column(name = "categorys", nullable = false)
         private String categorys;
 
-        @Column(name = "image")
+        @Column(columnDefinition = "TEXT")
+        private String synopsis;
+
+        @Column(columnDefinition = "TEXT")
         private String image;
 
-        @Column(name = "active", nullable = true )
-        private String active;
+
+        @Column(name = "active")
+        private boolean active = true;
 
         @Column(name = "release date")
         private String releaseDate;
@@ -43,11 +43,17 @@ public class Movies {
         @Column(name = "duration")
         private String duration;
 
-        @ManyToOne
-        private Category category;
+
 
         @ManyToOne
+        @JoinColumn(name = "languages_id")
         private Languages languages;
+
+
+        @ManyToOne
+        @JoinColumn(name = "category_id")
+        private Category category;
+
 
 
     }
