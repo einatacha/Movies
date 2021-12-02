@@ -1,6 +1,5 @@
-package com.example.Movies.entities.users;
+package com.example.Movies.entities;
 
-import com.example.Movies.enums.ProfileEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,14 +23,10 @@ public class Languages {
     private int id;
 
     @Column(name = "tag", nullable = false)
-    private int tag;
+    private String tag;
 
 
-    @OneToMany
-    private Movies movies;
 
-    @OneToMany
-    private Category category;
 
 
 }

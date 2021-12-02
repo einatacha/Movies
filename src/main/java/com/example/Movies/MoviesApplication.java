@@ -2,12 +2,16 @@ package com.example.Movies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
-public class MoviesApplication {
+import java.lang.reflect.Parameter;
 
-	public static void main(String[] args) {
-		SpringApplication.run(MoviesApplication.class, args);
-	}
 
-}
+    @SpringBootApplication
+    public class MoviesApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(MoviesApplication.class, args);
+
+        }
+    }
