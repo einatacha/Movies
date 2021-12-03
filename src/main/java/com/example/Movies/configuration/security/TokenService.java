@@ -1,6 +1,7 @@
 package com.example.Movies.configuration.security;
 import java.util.Date;
 import com.example.Movies.entities.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -18,12 +19,12 @@ public class TokenService {
     @Value("${movies.jwt.expiration}")
     private String secret;
 
-    public String generateToken(Authentication authentication){
-     User loggedUser = (User)  authentication.getPrincipal();
-     Date today = new Date();
-     Date  expirationDate = new Date(today.getTime() + Long.parseLong(expiration));
+    public String generateToken(Authentication authentication) {
+        User loggedUser = (User) authentication.getPrincipal();
+        Date today = new Date();
+        Date expirationDate = new Date(today.getTime() + Long.parseLong(expiration));
 
-       return  Jwts.builder()
+        return Jwts.builder()
                 .setIssuer("Creator")
                 .setSubject(loggedUser.getId().toString())
                 .setIssuedAt(today)
@@ -32,4 +33,17 @@ public class TokenService {
                 .compact();
     }
 
+    public boolean isTokenValid(String token) {
+        try {
+            Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public Long getIdUser(String token) {
+        Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
+        return Long.parseLong(claims.getSubject());
+    }
 }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class -AuthenticationForTokenFilter extends OncePerRequestFilter {
+public class AuthenticationForTokenFilter extends OncePerRequestFilter {
 
 
 
@@ -29,7 +29,7 @@ public class -AuthenticationForTokenFilter extends OncePerRequestFilter {
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
                 throws ServletException, IOException {
 
-            String token = recuperarToken(request);
+            String token = retrieveToken(request);
             boolean valid= tokenService.isTokenValid(token);
             if (valid) {
                 authenticateCustomer(token);
@@ -45,7 +45,7 @@ public class -AuthenticationForTokenFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        private String recuperarToken(HttpServletRequest request) {
+        private String retrieveToken(HttpServletRequest request) {
             String token = request.getHeader("Authorization");
             if (token == null || token.isEmpty() || !token.startsWith("Bearer ")) {
                 return null;
@@ -55,4 +55,4 @@ public class -AuthenticationForTokenFilter extends OncePerRequestFilter {
         }
 
     }
-}
+
