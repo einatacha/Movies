@@ -1,5 +1,7 @@
 package com.example.Movies.configuration.security;
 
+import com.example.Movies.entities.User;
+import com.example.Movies.repository.UserRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -10,28 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AuthenticationForToken {
-
-
-import java.io.IOException;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.filter.OncePerRequestFilter;
+public class -AuthenticationForTokenFilter extends OncePerRequestFilter {
 
 
 
-    public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 
         private TokenService tokenService;
-        private UsuarioRepository repository;
+        private UserRepository repository;
 
-        public AutenticacaoViaTokenFilter(TokenService tokenService, UsuarioRepository repository) {
+        public AuthenticationForTokenFilter(TokenService tokenService, UserRepository repository) {
             this.tokenService = tokenService;
             this.repository = repository;
         }
@@ -41,18 +30,18 @@ import org.springframework.web.filter.OncePerRequestFilter;
                 throws ServletException, IOException {
 
             String token = recuperarToken(request);
-            boolean valido = tokenService.isTokenValido(token);
-            if (valido) {
-                autenticarCliente(token);
+            boolean valid= tokenService.isTokenValid(token);
+            if (valid) {
+                authenticateCustomer(token);
             }
 
             filterChain.doFilter(request, response);
         }
 
-        private void autenticarCliente(String token) {
-            Long idUsuario = tokenService.getIdUsuario(token);
-            Usuario usuario = repository.findById(idUsuario).get();
-            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+        private void authenticateCustomer(String token) {
+            Long idUser = tokenService.getIdUser(token);
+            User user = repository.findById(idUser).get();
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
