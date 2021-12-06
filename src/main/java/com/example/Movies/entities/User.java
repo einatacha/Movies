@@ -19,12 +19,14 @@ import java.util.List;
 
 public class User implements  UserDetails{
 
+    private static final long serialVersion=1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column(name = "cellphone")
     private int cellPhone;
 
@@ -57,6 +59,7 @@ public class User implements  UserDetails{
     public String getPassword(){
         return this.password;
     }
+
     @Override
     public String getUsername() {
         return this.email;

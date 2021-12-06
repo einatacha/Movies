@@ -22,6 +22,7 @@ public class AuthenticationController {
 
     @Autowired
     private AuthenticationManager authManager;
+
     @Autowired
      private TokenService tokenService;
 
@@ -29,15 +30,11 @@ public class AuthenticationController {
     public ResponseEntity<TokenDto> authenticate(@RequestBody @Valid LoginForm form){
         UsernamePasswordAuthenticationToken dataLogin = form.convert();
 
-
-//
        try {
            Authentication authentication = authManager.authenticate(dataLogin);
-
            String token = tokenService.generateToken(authentication);
            return ResponseEntity.ok(new TokenDto(token,"Bearer"));
-       }
-       catch (AuthenticationException e) {
+       } catch (AuthenticationException e) {
            return ResponseEntity.badRequest().build();
        }
     }
