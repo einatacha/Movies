@@ -1,12 +1,15 @@
 package com.example.Movies.configuration.security;
 import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
 import com.example.Movies.entities.User;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;;
-import org.springframework.stereotype.Service;
-import org.springframework.security.core.Authentication;
 
 @Service
 public class TokenService {
