@@ -45,7 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/movies").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/user").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/user/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/movies/user/register").permitAll()
                 .anyRequest().authenticated()
+
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
               .and().addFilterBefore(new AuthenticationForTokenFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class);

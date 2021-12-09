@@ -1,4 +1,4 @@
-package com.example.Movies.service.Exceptions;
+package com.example.Movies.service.exception;
 
 public class ResourceNotFoundDetails {
     private String title;

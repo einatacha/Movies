@@ -1,7 +1,7 @@
-package com.example.Movies.service.Exceptions;
+package com.example.Movies.service.exception;
 
-import com.example.Movies.service.Exceptions.ResourceNotFoundDetails;
-import com.example.Movies.service.Exceptions.ResourceNotFoundException;
+import com.example.Movies.service.exception.ResourceNotFoundDetails;
+import com.example.Movies.service.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
