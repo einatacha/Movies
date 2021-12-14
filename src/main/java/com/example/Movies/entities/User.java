@@ -1,10 +1,14 @@
 package com.example.Movies.entities;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 //aprovado
+import javax.persistence.UniqueConstraint;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = "CPF", name = "users"))
 
 public class User implements  UserDetails{
 
@@ -24,22 +29,26 @@ public class User implements  UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "id", nullable = false)
+    @Column(name = "id",nullable = false )
     private Long id;
 
-    @Column(name = "cellphone")
+    @Column(name = "cellphone", nullable = false)
     private int cellPhone;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false) @Length(min = 6)
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "email", nullable = false)
+
+   @Email
+   @Column(name = "email", nullable = false, unique=true)
     private String email;
 
-    @Column(name = "CPF", nullable = false)
-    private String CPF;
+   @org.hibernate.validator.constraints.br.CPF
+//   @Un(message = "email.unique.violation")
+   @Column(name = "CPF", nullable = false,unique=true ) @Length(min = 11, max = 11)
+    private String cpf;
 
     @Column(name = "profiles")
     private String profiles;

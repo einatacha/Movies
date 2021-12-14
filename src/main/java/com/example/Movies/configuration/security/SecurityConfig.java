@@ -43,11 +43,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/movies").permitAll()
-                .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/user").permitAll()
                 .antMatchers(HttpMethod.GET, "/movies/user/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/list").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/list/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/category").permitAll()
+                .antMatchers(HttpMethod.GET, "/movies/category/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/movies/category/register").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/category/update/{id}").permitAll()
                 .antMatchers(HttpMethod.POST, "/movies/user/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/movies/register").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/user/update/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/update/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .anyRequest().authenticated()
 
                 .and().csrf().disable()

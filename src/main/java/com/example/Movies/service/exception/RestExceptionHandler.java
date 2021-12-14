@@ -1,13 +1,12 @@
 package com.example.Movies.service.exception;
 
-import com.example.Movies.service.exception.ResourceNotFoundDetails;
-import com.example.Movies.service.exception.ResourceNotFoundException;
+import java.util.Date;
+
+import com.sun.xml.bind.api.impl.NameConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import java.util.Date;
 
 @ControllerAdvice
 public class RestExceptionHandler {
@@ -25,5 +24,16 @@ public class RestExceptionHandler {
 
 
     }
+    @ExceptionHandler (DataIntegratyViolationException.class)
+    public ResponseEntity<?> handleResourceNotFoundException(DataIntegratyViolationException e){
+        ResourceNotFoundDetails rnfDetails = ResourceNotFoundDetails.Builder
+                .newBuilder()
+                .status(HttpStatus.BAD_REQUEST.value())
+                .build();
+        return new ResponseEntity<>(rnfDetails, HttpStatus.BAD_REQUEST);
+
+
+    }
+
 
 }

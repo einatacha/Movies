@@ -1,64 +1,50 @@
 package com.example.Movies.controller;
 
-import  java.net.URI;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import com.example.Movies.controller.dto.UserDto;
 import com.example.Movies.entities.User;
 import com.example.Movies.service.UserService;
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import  io.swagger.annotations.Api;
+import javax.validation.Valid;
+import java.util.List;
+
 
 @Api
 @RestController
 @RequestMapping(value = "/movies")
 
 public class UserController {
-
     @Autowired
     private UserService userService;
 
     @GetMapping(value = "/user")
-    public List<UserDto> list(){
-        List<User> user = userService.findAll();
-        return UserDto.convert(user);
+    public List<User> listUser(){
+        return userService.findAll();
     }
 
     @GetMapping(value = "/user/{id}")
-    public List<UserDto> listUser(@PathVariable(value="id") long id){
+    public List<User> listUser(@PathVariable(value="id") long id){
 
         List<User> user = userService.findById(id);
         if(user != null) {
 
-            return UserDto.convertUser(user);
+            return userService.findById(id);
         }
 
-        List<User> users = userService.findAll();
-        return UserDto.convert(user);
+        return userService.findAll();
     }
 
-    @PostMapping(value = "/user/register")
-    public ResponseEntity<User> Register(@RequestBody @Validated User user, UriComponentsBuilder uriBuilder) {
-        userService.save(user);
-
-        URI uri = uriBuilder.path("/movies/user/register/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).body(user);
+   @PostMapping(value = "/user/register")
+  public User createUser(@RequestBody @Valid User user) {
+      return userService.save(user);
     }
-
+    @PutMapping(value = "/user/update/{id}")
+    public User update (@PathVariable Long id, @RequestBody @Valid User user) {
+        return  this.userService.update(user);
+    }
 
 }
-
 
 
 
