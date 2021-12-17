@@ -12,17 +12,7 @@ import java.util.List;
 
 @Service
 public class MoviesService {
-//    @Autowired
-//    private MoviesRepository moviesRepository;
-//    public List<Movies>findAll(){
-//        return moviesRepository.findAll();
-//    }
-//    public List<Movies>findById(long userId){
-//        return moviesRepository.findById(userId);
-//    }
-//
-//    public void save(Movies movies) {
-//        moviesRepository.save(movies);
+
 @Autowired
 private MoviesRepository moviesRepository;
 
@@ -42,5 +32,8 @@ public Movies update(@Valid Movies movies) {
         findById(movies.getId());
         return moviesRepository.saveAndFlush(movies);
     }
+        public void deleteById(Long id) {
+                moviesRepository.deleteById(id);
+        }
 }
 

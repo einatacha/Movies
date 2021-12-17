@@ -2,6 +2,7 @@ package com.example.Movies.controller;
 
 import com.example.Movies.entities.Movies;
 
+import com.example.Movies.entities.User;
 import com.example.Movies.service.MoviesService;
 
 import java.util.List;
@@ -9,15 +10,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
+import org.springframework.web.bind.annotation.*;
 
 
 import io.swagger.annotations.Api;
@@ -31,15 +24,15 @@ public class MoviesController {
     private MoviesService moviesService;
 
     @GetMapping(value = "/list")
-    public List<Movies> listMovies(){
+    public List<Movies> listMovies() {
         return moviesService.findAll();
     }
 
     @GetMapping(value = "/list/{id}")
-    public List<Movies> listMovies(@PathVariable(value="id") long id){
+    public List<Movies> listMovies(@PathVariable(value = "id") long id) {
 
         List<Movies> movies = moviesService.findById(id);
-        if(movies != null) {
+        if (movies != null) {
 
             return moviesService.findById(id);
         }
@@ -53,7 +46,18 @@ public class MoviesController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public Movies update (@PathVariable Long id, @RequestBody @Valid Movies movies) {
-        return  this.moviesService.update(movies);
+    public Movies update(@PathVariable Long id, @RequestBody @Valid Movies movies) {
+        return this.moviesService.update(movies);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        moviesService.deleteById(id);
+    }
+
+    @PutMapping(value = "/active/{id}")
+    public Movies active(@PathVariable Long id , @RequestBody @Valid Movies movies) {
+        movies.setActive(false);
+        return this.moviesService.update(movies);
     }
 }

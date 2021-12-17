@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -18,18 +20,28 @@ public class Movies {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
         @Column(name = "id", nullable = false)
         private long id;
-
-        @Column(name = "title")
+//
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
+        @Column(name = "title", nullable = false)
         private String title;
-
+//
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
         @Column(name = "categorys", nullable = false)
         private String categorys;
 
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
         @Column(columnDefinition = "TEXT")
         private String synopsis;
 
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
         @Column(columnDefinition = "TEXT")
         private String image;
 
@@ -40,6 +52,8 @@ public class Movies {
         @Column(name = "releasedate")
         private String releaseDate;
 
+//        @NotNull(message =  "Este campo não pode ser nulo" )
+//        @NotEmpty(message=  "Este campo não pode ser vazio" )
         @Column(name = "duration")
         private String duration;
 

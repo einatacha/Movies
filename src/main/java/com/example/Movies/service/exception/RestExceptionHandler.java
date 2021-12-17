@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class RestExceptionHandler {
-    @ExceptionHandler (ResourceNotFoundException.class)
-    public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException rfnException){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException rfnException) {
         ResourceNotFoundDetails rnfDetails = ResourceNotFoundDetails.Builder
                 .newBuilder()
                 .timestamp(new Date().getTime())
@@ -24,16 +24,19 @@ public class RestExceptionHandler {
 
 
     }
-    @ExceptionHandler (DataIntegratyViolationException.class)
-    public ResponseEntity<?> handleResourceNotFoundException(DataIntegratyViolationException e){
-        ResourceNotFoundDetails rnfDetails = ResourceNotFoundDetails.Builder
-                .newBuilder()
-                .status(HttpStatus.BAD_REQUEST.value())
-                .build();
-        return new ResponseEntity<>(rnfDetails, HttpStatus.BAD_REQUEST);
+//
+//    @ExceptionHandler(ResourceInternalServerError.class)
+//    public ResponseEntity<?> handleResourceInternalServerError(ResourceInternalServerError error) {
+//        ResourceNotFoundDetails rnfDetails = ResourceNotFoundDetails.Builder
+//                .newBuilder()
+//                .timestamp(new Date().getTime())
+//                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+//                .title("sla")
+//                .detail(error.getMessage())
+//                .developerMessage(error.getClass().getName())
+//                .build();
+//        return new ResponseEntity<>(rnfDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+//
 
-
-    }
-
-
+//    }
 }

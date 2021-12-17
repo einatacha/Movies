@@ -55,6 +55,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/movies/register").permitAll()
                 .antMatchers(HttpMethod.PUT, "/movies/user/update/{id}").permitAll()
                 .antMatchers(HttpMethod.PUT, "/movies/update/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/update/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/user/active/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/category/active/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/movies/active/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/movies/user/delete/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/movies/delete/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/movies/category/delete/{id}").access(Profil)
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .anyRequest().authenticated()
 
@@ -67,6 +74,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
 
+    }
+    @Bean
+    BCryptPasswordEncoder bCryptPasswordEncoder(){
+
+        return new BCryptPasswordEncoder();
     }
 }
 

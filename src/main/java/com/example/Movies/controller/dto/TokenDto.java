@@ -2,6 +2,7 @@ package com.example.Movies.controller.dto;
 
 public class TokenDto {
     private String token;
+
     private String type;
 
     public String getToken() {

@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,31 +32,46 @@ public class User implements  UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "id",nullable = false )
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode ser vazio" )
+    @Column(name = "id" )
     private Long id;
 
-    @Column(name = "cellphone", nullable = false)
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode ser vazio" )
+    @Column(name = "cellphone")
     private int cellPhone;
-
-    @Column(name = "password", nullable = false) @Length(min = 6)
+//
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode ser vazio" )
+    @Column(name = "password") @Length(min = 6)
     private String password;
-
-    @Column(name = "name",nullable = false)
+//
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode ser vazio" )
+    @Column(name = "name")
     private String name;
 
    @Email
-   @Column(name = "email", nullable = false, unique=true)
+//   @NotNull(message =  "Este campo não pode ser nulo" )
+//   @NotEmpty(message  =  "Este campo não pode estar vazio" )
+   @Column(name = "email", unique=true)
     private String email;
 
    @org.hibernate.validator.constraints.br.CPF
-//   @Un(message = "email.unique.violation")
+//   @NotNull(message =  "Este campo não pode ser nulo" )
+//   @NotEmpty(message  =  "Este campo não pode estar vazio" )
    @Column(name = "CPF", nullable = false,unique=true ) @Length(min = 11, max = 11)
     private String cpf;
 
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode estar vazio" )
     @Column(name = "profiles")
     private String profiles;
-
-    @Column(name = "active")
+//
+//    @NotNull(message =  "Este campo não pode ser nulo" )
+//    @NotEmpty(message  =  "Este campo não pode estar vazio" )
+    @Column(name = "active" )
     private boolean active = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -98,7 +116,8 @@ public class User implements  UserDetails{
     @JoinColumn(name = "languages_id")
     private Languages languages;
 
-    }
+   
+}
 
 
 

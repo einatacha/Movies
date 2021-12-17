@@ -6,6 +6,7 @@ public class ResourceNotFoundDetails {
             private  String detail;
             private long timestamp;
             private String developerMessage;
+
     public ResourceNotFoundDetails() {
 
     }
@@ -36,6 +37,7 @@ public class ResourceNotFoundDetails {
         private  String detail;
         private long timestamp;
         private String developerMessage;
+
 
         private Builder() {
         }

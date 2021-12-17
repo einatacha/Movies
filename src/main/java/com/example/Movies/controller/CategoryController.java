@@ -69,13 +69,7 @@ import javax.validation.Valid;
 
 import com.example.Movies.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Movies.service.CategoryService;
 
@@ -90,15 +84,15 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping(value = "/category")
-    public List<Category> list(){
+    public List<Category> list() {
         return categoryService.findAll();
     }
 
     @GetMapping(value = "/category/{id}")
-    public List<Category> listCategory(@PathVariable(value="id") long id){
+    public List<Category> listCategory(@PathVariable(value = "id") long id) {
 
         List<Category> movies = categoryService.findById(id);
-        if(movies != null) {
+        if (movies != null) {
 
             return categoryService.findById(id);
         }
@@ -112,11 +106,19 @@ public class CategoryController {
     }
 
     @PutMapping(value = "/category/update/{id}")
-    public Category update (@PathVariable Long id, @RequestBody @Valid Category category) {
-        return  this.categoryService.update(category);
+    public Category update(@PathVariable Long id, @RequestBody @Valid Category category) {
+        return this.categoryService.update(category);
+    }
+    @DeleteMapping(value = "/category/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        categoryService.deleteById(id);
     }
 
+    @PutMapping(value = "/category/active/{id}")
+    public Category active(@PathVariable Long id, @RequestBody @Valid Category categories) {
+        categories.setActive(false);
+        return this.categoryService.update(categories);
 
 
-
+    }
 }
