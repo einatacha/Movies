@@ -1,0 +1,51 @@
+<div class="title-item" *ngFor="let u of user" >
+<!--
+  (click)= "onSelect(user) -->
+
+
+
+
+<style>
+  table, th, td{
+    border :1px solid black
+  }
+  th, td {
+    padding: 5px 10px;
+  }
+  h2{
+    background-color: black;
+  }
+
+</style>
+
+<h2>    informações do usuário {{u.name}}</h2>
+<table>
+
+<tr>
+<th>ID</th>
+<th>Nome</th>
+<th>Celular</th>
+<th>Email</th>
+<th>CPF</th>
+</tr>
+
+<tr>
+<td><span class="badge">{{u.id}}<button>Editar</button></span></td>
+<td>{{u.name}}<button>Editar</button></td>
+<td>{{u.cellphone}}<button>Editar</button></td>
+<td>{{u.email}}<button>Editar</button></td>
+<td>{{u.cpf}}   <button>Editar</button></td>
+
+</tr>
+
+
+
+
+</table>
+
+
+
+      </div>
+
+
+

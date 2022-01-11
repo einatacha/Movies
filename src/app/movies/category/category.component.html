@@ -1,0 +1,74 @@
+<!-- <pre>{{category| json}}</pre> -->
+<!-- <div class="box">
+    <div class="p-3 list-titles">
+
+      <h2 class="h4">Categorias</h2>
+
+      <div class="d-flex flex-nowrap overflow-hidden"> -->
+
+          <div class="title-item" *ngFor="let c of category">
+
+
+                        <!-- <form>
+                          <fieldset>
+                          <p>ID : {{c.id}} </p>
+                          <p>Nome : {{c.name}}</p>
+                          <P>Idioma : {{c.language}}</P>
+                        </fieldset>
+                        </form>
+                  </div>
+
+
+              </div>
+
+          </div>
+
+        </div>
+         -->
+
+
+
+
+
+
+          <style>
+            table, th, td{
+              border :1px solid black
+            }
+            th, td {
+              padding: 5px 10px;
+            }
+            h2{
+              background-color: black;
+            }
+
+          </style>
+
+          <h2>    informações da categoria {{c.id}}</h2>
+          <table>
+
+          <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Linguagem</th>
+
+          </tr>
+
+          <tr>
+          <td>{{c.id}}<button>Editar</button></td>
+          <td>{{c.name}}<button>Editar</button></td>
+          <td> {{c.language}}<button>Editar</button></td>
+
+
+          </tr>
+
+
+
+
+          </table>
+
+
+
+                </div>
+
+

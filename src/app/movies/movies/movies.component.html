@@ -1,0 +1,102 @@
+
+
+<div class="row no-gutters">
+<h3>Natflix</h3>
+
+
+  <div class="col-12 full-banner text-white">
+      <div class="p-4 d-flex justify-content-start h-100">
+          <div>
+              <h1 class="h3">Vingadores: Ultimato</h1>
+              <small class="d-flex my-2">
+                  <span class="mr-3">2019</span>
+                  <span class="mr-3">12</span>
+                  <span>182min</span>
+              </small>
+              <p class="d-none d-lg-block">Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.</p>
+              <a href="#" class="btn btn-primary text-uppercase font-weight-bold">Assistir</a>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<div class="p-3 list-titles">
+
+  <h2 class="h4">Em alta</h2>
+
+  <div class="d-flex flex-nowrap overflow-hidden">
+
+      <div class="title-item" *ngFor="let m of movies">
+
+
+            <style>
+              .img{
+                height: 400px;
+                width: 300px;
+              }
+              p {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;}
+            </style>
+
+
+          <img src="{{m.image}}" class="img">
+
+
+          <div class="items">
+              <div class="left-side">
+                  <button type="button" class="btn-play"><i class="material-icons">play_arrow</i></button>
+                  <h2>{{m.title}}</h2>
+                  <ul class="infos">
+                      <li class="relevance">98% relevante</li>
+                      <li class="age age-16"></li>
+
+                  </ul>
+                  <ul class="categories">
+
+                      <li>{{m.categorys}}</li>
+                      <li>{{m.duration}}</li>
+                      <li>{{m.releasedate}}</li>
+
+                  </ul>
+
+              </div>
+
+
+          </div>
+
+            <p class="titulo">
+              <a href="javascript:void(0);"></a> {{m.synopsis}}
+          </p>
+
+
+
+
+
+      </div>
+
+
+  </div>
+
+</div>
+
+<form [formGroup]="form" >
+   <input formControlName="title" type="text"/>
+  <input type="text"/> <button (click)="createMovies()">Salvar</button>
+  <input type="text"/>
+  <input type="text"/>
+  <input type="text"/>
+</form>
+
+<footer class="row no-gutters p-4">
+
+<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Termos de uso</a>
+<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Declaração de privacidade</a>
+<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Preferências de cookies</a>
+<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Centro de ajuda</a>
+
+</footer>
+<!-- <pre>{{movies| json}}</pre> -->
