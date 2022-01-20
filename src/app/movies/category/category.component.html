@@ -6,10 +6,10 @@
 
       <div class="d-flex flex-nowrap overflow-hidden"> -->
 
-          <div class="title-item" *ngFor="let c of category">
+<div class="title-item" *ngFor="let c of category">
 
 
-                        <!-- <form>
+  <!-- <form>
                           <fieldset>
                           <p>ID : {{c.id}} </p>
                           <p>Nome : {{c.name}}</p>
@@ -31,44 +31,46 @@
 
 
 
-          <style>
-            table, th, td{
-              border :1px solid black
-            }
-            th, td {
-              padding: 5px 10px;
-            }
-            h2{
-              background-color: black;
-            }
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black
+    }
 
-          </style>
+    th,
+    td {
+      padding: 5px 10px;
+    }
 
-          <h2>    informações da categoria {{c.id}}</h2>
-          <table>
+    h2 {
+      background: linear-gradient(to right, #252425, #e00000)
+    }
+  </style>
 
-          <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Linguagem</th>
+  <h2> informações da categoria {{c.id}}</h2>
+  <table>
 
-          </tr>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Linguagem</th>
 
-          <tr>
-          <td>{{c.id}}<button>Editar</button></td>
-          <td>{{c.name}}<button>Editar</button></td>
-          <td> {{c.language}}<button>Editar</button></td>
+    </tr>
 
-
-          </tr>
-
-
-
-
-          </table>
+    <tr>s
+      <td>{{c.id}}<button>Editar</button></td>
+      <td>{{c.name}}<button>Editar</button></td>
+      <td> {{c.language}}<button>Editar</button></td>
 
 
+    </tr>
 
-                </div>
 
 
+
+  </table>
+
+
+
+</div>

@@ -4,16 +4,11 @@ import { UserComponent } from './user.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 
-
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        UserComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [UserComponent],
     }).compileComponents();
   });
 
@@ -33,6 +28,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(UserComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('movies app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'movies app is running!'
+    );
   });
 });

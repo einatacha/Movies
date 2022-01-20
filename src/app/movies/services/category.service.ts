@@ -1,26 +1,15 @@
 import { Injectable } from '@angular/core';
- import { HttpClient } from '@angular/common/http';
- import { Observable } from 'rxjs';
-
+import { HttpClient } from '@angular/common/http';
 
 import { apiUrl } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
+  constructor(private http: HttpClient) {}
 
-
-
-  constructor(
-    private http: HttpClient
-    )
-   {
-
-   }
-
-  listCategory(){
-
+  listCategory() {
     return this.http.get(`${apiUrl}/movies/category`);
   }
 }

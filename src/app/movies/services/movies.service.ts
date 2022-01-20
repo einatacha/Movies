@@ -1,40 +1,26 @@
 import { Injectable } from '@angular/core';
- import { HttpClient } from '@angular/common/http';
- import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 // import { Movie } from '../model/movie';
 
 import { apiUrl } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoviesService {
+  constructor(private http: HttpClient) {}
 
-
-
-  constructor(
-    private http: HttpClient
-    )
-   {
-
-   }
-
-  listMovies(){
-     return this.http.get(`${apiUrl}/movies/list`);
-
+  listMovies() {
+    return this.http.get(`${apiUrl}/movies/list`);
   }
-  createMovies(movies: any){
-    return this.http.post(`${apiUrl}/movies/register`, movies);
-
+  createMovies(moviesPost: any) {
+    return this.http.post(`${apiUrl}/movies/register`, moviesPost);
   }
-
-  // post(url: string, body: any | null, options?: {
-  //   headers?: HttpHeaders | {
-  //       [header: string]: string | string[];
-    };
-
-
-// @PostMapping(value = "/register")
-// public Movies createMovies(@RequestBody @Valid Movies movies) {
-//     return moviesService.save(movies);
-// }
+  getById(moviesId: any) {
+    return this.http.get(`${apiUrl}"/movies/list/${moviesId}`);
+  }
+  putMovies(moviesId: any, movies: any) {
+    return this.http.put(`${apiUrl}"/movies/update/${moviesId}`, movies);
+  }
+}

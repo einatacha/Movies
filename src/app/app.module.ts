@@ -1,3 +1,6 @@
+import { MoviesIdComponent } from './movies/movies/movies.id.component';
+// import { UserPostComponent } from './movies/user/user.post.component';
+import { MoviesPostComponent } from './movies/movies/movies.post.component';
 import { CategoryComponent } from './movies/category/category.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -7,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserComponent } from './movies/user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
@@ -15,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     MoviesComponent,
     UserComponent,
-    CategoryComponent
+    CategoryComponent,
+    MoviesPostComponent,
+    MoviesIdComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,9 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

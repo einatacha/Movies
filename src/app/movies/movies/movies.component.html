@@ -1,102 +1,178 @@
-
-
-<div class="row no-gutters">
 <h3>Natflix</h3>
 
 
-  <div class="col-12 full-banner text-white">
-      <div class="p-4 d-flex justify-content-start h-100">
-          <div>
-              <h1 class="h3">Vingadores: Ultimato</h1>
-              <small class="d-flex my-2">
-                  <span class="mr-3">2019</span>
-                  <span class="mr-3">12</span>
-                  <span>182min</span>
-              </small>
-              <p class="d-none d-lg-block">Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.</p>
-              <a href="#" class="btn btn-primary text-uppercase font-weight-bold">Assistir</a>
-          </div>
-      </div>
+<div class="col-12 full-banner text-white">
+  <div class="p-4 d-flex justify-content-start h-100">
+    <div>
+      <h1 class="h3">Vingadores: Ultimato</h1>
+      <small class="d-flex my-2">
+        <span class="mr-3">2019</span>
+        <span class="mr-3">12</span>
+        <span>182min</span>
+      </small>
+      <p class="d-none d-lg-block">Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a
+        perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e
+        Natasha Romanov lideram a resistência contra o titã louco.</p>
+      <a href="#" class="btn btn-primary text-uppercase font-weight-bold">Assistir</a>
+    </div>
   </div>
-
 </div>
+<div class="d-flex ">
 
-<div class="p-3 list-titles">
+  <div class="p-3 list-titles">
 
-  <h2 class="h4">Em alta</h2>
-
-  <div class="d-flex flex-nowrap overflow-hidden">
+    <h2 class="h4">Em alta</h2>
+    <div class="wrapper">
+      <!-- <div class="d-flex "> -->
 
       <div class="title-item" *ngFor="let m of movies">
+        <!--
 
+        <style>
+          /* .img {
+            height: 400px;
+            width: 300px;
+          }
 
-            <style>
-              .img{
-                height: 400px;
-                width: 300px;
-              }
-              p {
+          p {
             max-width: 300px;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow:ellipsis;}
-            </style>
+            text-overflow: ellipsis;
+          }
+
+          .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px;
+          } */
+        </style>
+ -->
+
+        <img src="{{m.image}}" class="img">
 
 
-          <img src="{{m.image}}" class="img">
+        <div class="items">
+          <div class="left-side">
+            <button type="button" class="btn-play"><i class="material-icons">play_arrow</i></button>
+            <h2>{{m.title}}</h2>
+            <p class="titulo">
+              <a href="javascript:void(0);"></a> {{m.synopsis}}
+            </p>
+            <ul class="infos">
+              <li class="relevance">98% relevante</li>
+              <li class="age age-16"></li>
+
+            </ul>
+            <ul class="categories">
+
+              <li>{{m.categorys}}</li>
+              <li>{{m.duration}}</li>
+              <li>{{m.releasedate}}</li>
+
+              <a [routerLink]="['/moviesId/' + m.id]" class="btn btn-outline-dark">Ver mais</a>
 
 
-          <div class="items">
-              <div class="left-side">
-                  <button type="button" class="btn-play"><i class="material-icons">play_arrow</i></button>
-                  <h2>{{m.title}}</h2>
-                  <ul class="infos">
-                      <li class="relevance">98% relevante</li>
-                      <li class="age age-16"></li>
-
-                  </ul>
-                  <ul class="categories">
-
-                      <li>{{m.categorys}}</li>
-                      <li>{{m.duration}}</li>
-                      <li>{{m.releasedate}}</li>
-
-                  </ul>
-
-              </div>
-
+            </ul>
 
           </div>
 
+
+        </div>
+        <div *ngFor="let i of moviesId"></div>
+
+        <pre>{{moviesId| json}}</pre>
+        <!--
             <p class="titulo">
               <a href="javascript:void(0);"></a> {{m.synopsis}}
-          </p>
-
-
+          </p> -->
 
 
 
       </div>
 
 
-  </div>
 
-</div>
 
-<form [formGroup]="form" >
+      <!-- </div> -->
+
+      <!-- <form [formGroup]="form" >
    <input formControlName="title" type="text"/>
-  <input type="text"/> <button (click)="createMovies()">Salvar</button>
-  <input type="text"/>
-  <input type="text"/>
-  <input type="text"/>
+ <input formControlName="title" type="text"/>
+  <select formControlName= "categorys">
+    <option *ngFor="let c of category" [ngValue]="c.id">  {{c.name}}</option>
+</select>
+<input formControlName="synopsis" type="text"/>
+<input formControlName="title" type="text"/>
+<input formControlName="duration" type="text"/>
+  <button (click)="createMovies()">Salvar</button>
 </form>
 
-<footer class="row no-gutters p-4">
+ <html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <main class="container">
+      <h2>Natflix Login</h2>
+      <form [formGroup]="form">
+          <div class="input-field">
+            <input formControlName="title" type="text"  class="form-control"
+                  placeholder="Digite o titulo do filme">
+              <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <input formControlName="synopsis" type="text "  class="form-control"
+                  placeholder="Digite a sinopse">
+              <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <input formControlName="duration" type="text"  class="form-control"
+                placeholder="Digite a duração">
+            <div class="underline"></div>
+        </div>
+        <div class="input-field">
+         <p>Ano de lançamento</p>
+          <input formControlName="releaseDate" type="text"  class="form-control"
+              placeholder="Digite o ano de lançamento">
+          <div class="underline"></div>
+      </div>
+      <div class="input-field">
+        <input formControlName="image" type="text"
+            placeholder="Digite a Url da imagem">
 
-<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Termos de uso</a>
-<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Declaração de privacidade</a>
-<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Preferências de cookies</a>
-<a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Centro de ajuda</a>
+    </div>
 
-</footer>
-<!-- <pre>{{movies| json}}</pre> -->
+    <div class="input-field">
+      <select formControlName= "categorys" class="col-12 mb-3">
+        <option [value]="null">Selecione a categoria</option>
+        <option *ngFor="let c of category" [ngValue]="c.id">  {{c.name}}</option>
+    </select>
+
+    </div>
+    <button (click)="createMovies()" class="btn">Salvar</button>
+          <input type="submit" value="Continue">
+      </form>
+
+
+
+  </main>
+</body>
+</html>
+ -->
+    </div>
+    <!-- <button (click)="abrirMoviesPost(2)">Editar</button> -->
+    <!-- <hr>
+ <a routerLink="/moviesPost" routerLinkActive="selected">Editar</a><br> -->
+
+    <footer class="row no-gutters p-4">
+
+      <a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Termos de uso</a>
+      <a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Declaração de privacidade</a>
+      <a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Preferências de cookies</a>
+      <a class="col-12 col-sm-6 col-lg-3 text-reset" href="#">Centro de ajuda</a>
+
+    </footer>
+  </div>
+  <!-- <pre>{{movies| json}}</pre> -->

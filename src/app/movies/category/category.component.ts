@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
@@ -7,35 +5,25 @@ import { catchError } from 'rxjs/operators';
 
 import { CategoryService } from './../services/category.service';
 
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
-
+  styleUrls: ['./category.component.scss'],
 })
-
-
 export class CategoryComponent implements OnInit {
-title = 'category';
+  title = 'category';
 
- public category : any;
+  public category: any;
 
-  constructor(
-    private categoryService: CategoryService,
-
-  ) {}
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.listCategory();
   }
-  listCategory(){
-    this.categoryService.listCategory().subscribe(data => {
+  listCategory() {
+    this.categoryService.listCategory().subscribe((data) => {
       this.category = data;
-      console.log("category", this.category);
+      console.log('category', this.category);
     });
   }
 }
-
-
-

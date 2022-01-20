@@ -1,51 +1,53 @@
-<div class="title-item" *ngFor="let u of user" >
-<!--
+<div class="title-item" *ngFor="let u of user">
+  <!--
   (click)= "onSelect(user) -->
 
 
 
 
-<style>
-  table, th, td{
-    border :1px solid black
-  }
-  th, td {
-    padding: 5px 10px;
-  }
-  h2{
-    background-color: black;
-  }
+  <style>
+    table,
+    th,
+    td {
 
-</style>
+      border: 1px solid #252425
+    }
 
-<h2>    informações do usuário {{u.name}}</h2>
-<table>
+    th,
+    td {
+      padding: 5px 10px;
+    }
 
-<tr>
-<th>ID</th>
-<th>Nome</th>
-<th>Celular</th>
-<th>Email</th>
-<th>CPF</th>
-</tr>
+    h2 {
+      background: linear-gradient(to right, #252425, #e00000)
+    }
+  </style>
 
-<tr>
-<td><span class="badge">{{u.id}}<button>Editar</button></span></td>
-<td>{{u.name}}<button>Editar</button></td>
-<td>{{u.cellphone}}<button>Editar</button></td>
-<td>{{u.email}}<button>Editar</button></td>
-<td>{{u.cpf}}   <button>Editar</button></td>
+  <h2> informações do usuário {{u.name}}</h2>
+  <table>
 
-</tr>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Celular</th>
+      <th>Email</th>
+      <th>CPF</th>
+    </tr>
 
+    <tr>
+      <td class="col-1 "><span class="badge">{{u.id}}<button>Editar</button></span></td>
+      <td>{{u.name}}<button>Editar</button></td>
+      <td>{{u.cellphone}}<button>Editar</button></td>
+      <td class="col-2">{{u.email}}<button>Editar</button></td>
+      <td>{{u.cpf}} <button>Editar</button></td>
 
-
-
-</table>
-
-
-
-      </div>
+    </tr>
 
 
 
+
+  </table>
+
+
+
+</div>
