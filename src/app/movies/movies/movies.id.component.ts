@@ -12,6 +12,7 @@ export class MoviesIdComponent implements OnInit {
   title = 'moviesId';
 
   public moviesId: any;
+  public movie: any;
 
   constructor(
     private moviesService: MoviesService,
@@ -26,8 +27,8 @@ export class MoviesIdComponent implements OnInit {
 
   getById() {
     this.moviesService.getById(this.moviesId).subscribe((data) => {
-      this.moviesId = data;
-      console.log('funciona', this.moviesId);
+      this.movie = data;
+      console.log('funciona', this.movie);
     });
   }
 }

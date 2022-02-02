@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   title = 'user';
 
   public user: any;
+  userId: any;
 
   constructor(private userService: UserService) {}
   //   onSelect(user){
@@ -26,6 +27,12 @@ export class UserComponent implements OnInit {
     this.userService.listUser().subscribe((data) => {
       this.user = data;
       console.log('user', this.user);
+    });
+  }
+  getById() {
+    this.userService.getById(this.userId).subscribe((data) => {
+      this.userId = data;
+      console.log('funciona', this.userId);
     });
   }
 }

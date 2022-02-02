@@ -1,29 +1,14 @@
 <div class="title-item" *ngFor="let u of user">
-  <!--
-  (click)= "onSelect(user) -->
 
 
 
 
-  <style>
-    table,
-    th,
-    td {
 
-      border: 1px solid #252425
-    }
-
-    th,
-    td {
-      padding: 5px 10px;
-    }
-
-    h2 {
-      background: linear-gradient(to right, #252425, #e00000)
-    }
-  </style>
-
-  <h2> informações do usuário {{u.name}}</h2>
+  <h2 id="a+"> informações do usuário {{u.name}}
+    <a [routerLink]="['/userId/' + u.id]" class="btn btn-outline-dark">Ver mais</a> <a
+      [routerLink]="['/userRegister/' + u.id]" class="btn btn-outline-dark">atualizar</a>
+    <div *ngFor="let i of userId"></div>
+  </h2>
   <table>
 
     <tr>
@@ -35,13 +20,14 @@
     </tr>
 
     <tr>
-      <td class="col-1 "><span class="badge">{{u.id}}<button>Editar</button></span></td>
-      <td>{{u.name}}<button>Editar</button></td>
-      <td>{{u.cellphone}}<button>Editar</button></td>
-      <td class="col-2">{{u.email}}<button>Editar</button></td>
-      <td>{{u.cpf}} <button>Editar</button></td>
+      <td class="col-1 "><span class="badge">{{u.id}}</span></td>
+      <td>{{u.name}}</td>
+      <td>{{u.cellPhone}}</td>
+      <td class="col-2">{{u.email}}></td>
+      <td>{{u.cpf}} </td>
 
     </tr>
+
 
 
 

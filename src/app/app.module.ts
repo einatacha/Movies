@@ -1,5 +1,8 @@
+import { CategoryPostComponent } from './movies/category/category.post.component';
+import { CategoryIdComponent } from './movies/category/category.id.component';
+import { UserIdComponent } from './movies/user/user.id.component';
 import { MoviesIdComponent } from './movies/movies/movies.id.component';
-// import { UserPostComponent } from './movies/user/user.post.component';
+import { UserPostComponent } from './movies/user/user.post.component';
 import { MoviesPostComponent } from './movies/movies/movies.post.component';
 import { CategoryComponent } from './movies/category/category.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -13,6 +16,7 @@ import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserComponent } from './movies/user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CategoryComponent,
     MoviesPostComponent,
     MoviesIdComponent,
+    UserPostComponent,
+    CategoryIdComponent,
+    CategoryPostComponent,
+    UserIdComponent,
+    AcessibilidadeComponent,
   ],
   imports: [
     BrowserModule,

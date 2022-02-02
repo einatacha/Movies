@@ -1,67 +1,23 @@
-<!-- <pre>{{category| json}}</pre> -->
-<!-- <div class="box">
-    <div class="p-3 list-titles">
-
-      <h2 class="h4">Categorias</h2>
-
-      <div class="d-flex flex-nowrap overflow-hidden"> -->
-
 <div class="title-item" *ngFor="let c of category">
 
-
-  <!-- <form>
-                          <fieldset>
-                          <p>ID : {{c.id}} </p>
-                          <p>Nome : {{c.name}}</p>
-                          <P>Idioma : {{c.language}}</P>
-                        </fieldset>
-                        </form>
-                  </div>
-
-
-              </div>
-
-          </div>
-
-        </div>
-         -->
-
-
-
-
-
-
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black
-    }
-
-    th,
-    td {
-      padding: 5px 10px;
-    }
-
-    h2 {
-      background: linear-gradient(to right, #252425, #e00000)
-    }
-  </style>
-
-  <h2> informações da categoria {{c.id}}</h2>
+  <h2> informações da categoria {{c.id}} <a [routerLink]="['/categoryId/' + c.id]" class="btn btn-outline-dark">Ver
+      mais</a> <a [routerLink]="['/categoryRegister/' + c.id]" class="btn btn-outline-dark">atualizar</a>
+    <div *ngFor="let i of categoryId"></div>
+  </h2>
   <table>
 
     <tr>
+
       <th>ID</th>
       <th>Nome</th>
       <th>Linguagem</th>
 
     </tr>
 
-    <tr>s
-      <td>{{c.id}}<button>Editar</button></td>
-      <td>{{c.name}}<button>Editar</button></td>
-      <td> {{c.language}}<button>Editar</button></td>
+    <tr>
+      <td>{{c.id}}</td>
+      <td>{{c.name}}</td>
+      <td> {{c.language}}</td>
 
 
     </tr>

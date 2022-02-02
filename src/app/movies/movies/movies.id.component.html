@@ -1,6 +1,7 @@
-<!--
-<div *ngFor="let m of moviesId"></div>
-
-
-<a [routerLink]="['/movies-list/' + m.id]" class="btn btn-outline-dark">Ver mais</a> -->
-<p>tanto faz</p>
+<div *ngFor="let m of movie">
+  <p>{{m.title}}</p>
+  <P>{{m.categorys}}</P>
+  <p>{{m.synopsis}}</p>
+  <p>{{m.duration}}</p>
+  <p>{{m.releasedate}}</p>
+</div>

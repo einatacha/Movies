@@ -18,9 +18,12 @@ export class MoviesService {
     return this.http.post(`${apiUrl}/movies/register`, moviesPost);
   }
   getById(moviesId: any) {
-    return this.http.get(`${apiUrl}"/movies/list/${moviesId}`);
+    return this.http.get(`${apiUrl}/movies/list/${moviesId}`);
   }
-  putMovies(moviesId: any, movies: any) {
-    return this.http.put(`${apiUrl}"/movies/update/${moviesId}`, movies);
+  putMovies(moviesId: any, movie: any) {
+    return this.http.put(`${apiUrl}/movies/update/${moviesId}`, movie);
+  }
+  deleteMovie(moviesId: any, movie: any) {
+    return this.http.delete(`${apiUrl}/movies/delete/${moviesId}`, movie);
   }
 }

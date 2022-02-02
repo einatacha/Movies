@@ -13,6 +13,15 @@ export class UserService {
     return this.http.get(`${apiUrl}/movies/user`);
   }
   createUser(userPost: any) {
-    return this.http.post(`${apiUrl}/movies/register`, userPost);
+    return this.http.post(`${apiUrl}/movies/user/register`, userPost);
+  }
+  getById(userId: any) {
+    return this.http.get(`${apiUrl}/movies/user/${userId}`);
+  }
+  putUser(userId: any, user: any) {
+    return this.http.put(`${apiUrl}movies/user/update/${userId}`, user);
+  }
+  deleteUser(userId: any, user: any) {
+    return this.http.delete(`${apiUrl}/movies/user/delete/${userId}`, user);
   }
 }

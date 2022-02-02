@@ -1,0 +1,87 @@
+body.contraste {
+  background: #000000 !important;
+}
+
+// .light {
+//   --bodybkg: white;
+//   --btntxt: "Ligar Alto-contraste";
+//   --btnfg: white;
+//   --btnbkg: blue;
+//   --pcolor: black;
+// }
+
+.dark {
+  --bodybkg: black;
+  --btntxt: "Desligar Alto-contraste";
+  --btnfg: white;
+  --btnbkg: red;
+  --pcolor: white;
+}
+
+#contraste {
+  background-color: var(--btnbkg);
+  color: var(--btnfg);
+}
+
+#contraste:after {
+  content: var(--btntxt);
+}
+
+p {
+  color: var(--pcolor);
+}
+
+body {
+  background-color: var(--bodybkg);
+}
+
+@media (max-width: 576px) {
+  .respon-cont {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .resp {
+    flex-direction: initial !important;
+    justify-content: center;
+  }
+}
+
+.img {
+  height: 25px;
+  width: 19px;
+  justify-content: center;
+}
+
+.btn {
+  background: #252425;
+  height: 40px;
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+body.contraste {
+  background: #000000;
+}
+
+.acess {
+  background: linear-gradient(to left, #252425, #e00000);
+}
+
+.shortcuts {
+  background-color: transparent;
+  color: white;
+  list-style: none;
+  margin-right: 10px;
+}
+body {
+  font-size: 16px;
+}
+h1 {
+  font-size: 2em;
+}
+p {
+  font-size: 1em;
+}

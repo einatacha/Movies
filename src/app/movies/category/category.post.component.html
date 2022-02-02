@@ -1,0 +1,20 @@
+<body>
+  <main class="container">
+    <h2>Natflix cadastro de categorias</h2>
+    <form [formGroup]="form">
+      <div class="input-field">
+        <input formControlName="nome" type="text" placeholder="Digite o nome da categoria" id="ob">
+        <div class="underline"></div>
+      </div>
+      <div class="input-field">
+        <input formControlName="language" type="text " placeholder="Digite a linguagem da categoria">
+        <div class="underline"></div>
+      </div>
+
+
+      <button (click)="createCategory()" class="btn" *ngIf="!categoryId">Salvar</button>
+      <button (click)="putCategory()" class="btn" *ngIf="categoryId">editar</button>
+      <button (click)="deleteCategory()" class="btn" *ngIf="categoryId">Deletar</button>
+    </form>
+  </main>
+</body>

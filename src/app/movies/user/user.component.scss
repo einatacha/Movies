@@ -9,3 +9,17 @@ table {
   align-items: center;
   justify-content: center;
 }
+table,
+th,
+td {
+  border: 1px solid #252425;
+}
+
+th,
+td {
+  padding: 5px 10px;
+}
+
+h2 {
+  background: linear-gradient(to right, #252425, #e00000);
+}

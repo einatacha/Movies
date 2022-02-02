@@ -1,60 +1,6 @@
-// import { CategoryService } from './../services/category.service';
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup } from '@angular/forms';
-// import { MatDialog } from '@angular/material/dialog';
-// import { Observable, of } from 'rxjs';
-// import { catchError } from 'rxjs/operators';
-
-// import { MoviesService } from './../services/movies.service';
-
-// @Component({
-//   selector: 'app-moviespost',
-//   templateUrl: './movies.post.component.html',
-//   styleUrls: ['./movies.post.component.scss'],
-// })
-// export class MoviesPostComponent implements OnInit {
-//   title = 'moviespost';
-
-//   public category: any;
-//   public moviesPost: any;
-//   public form: FormGroup = this.formBuilder.group({
-//     id: [null],
-//     active: true,
-//     title: [null],
-//     categorys: [null],
-//     synopsis: [null],
-//     releaseDate: [null],
-//     duration: [null],
-//   });
-
-//   constructor(
-//     private moviesService: MoviesService,
-//     private formBuilder: FormBuilder,
-//     private CategoryService: CategoryService
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.listCategory();
-//   }
-
-//   createMovies() {
-//     this.moviesService.createMovies(this.form.value).subscribe((data) => {
-//       console.log('salvou');
-//     });
-//   }
-//   listCategory() {
-//     this.CategoryService.listCategory().subscribe((data) => {
-//       this.category = data;
-//       console.log('category', this.category);
-//     });
-//   }
-// }
-
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 import { UserService } from './../services/user.service';
 
@@ -68,30 +14,80 @@ export class UserPostComponent implements OnInit {
 
   public user: any;
   public userPost: any;
-  public form: FormGroup = this.formBuilder.group({
-    //     id: [null],
-    //     active: true,
-    //     title: [null],
-    //     categorys: [null],
-    //     synopsis: [null],
-    //     releaseDate: [null],
-    //     duration: [null],
-      });
+  userId: any;
+  public form: FormGroup;
+  // =
+  // // this.formBuilder.group({
+  //   active: true,
+  //   cellphone: [null],
+  //   cpf: [null],
+  //   email: [null],
+  //   name: [null],
+  //   password: [null],
+  // });
 
-
-  constructor(private userService: UserService) {}
-  //   onSelect(user){
-
-  // }
-  ngOnInit(): void {
-
+  constructor(
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.form = this.formBuilder.group({
+      id: [null],
+      active: true,
+      cellPhone: [null],
+      cpf: [null],
+      email: [null],
+      name: [null],
+      password: [null],
+    });
   }
 
+  ngOnInit(): void {
+    this.userId = this.route.snapshot.params['id'];
+    this.getById();
+  }
 
-    createUser() {
-          this.userService.createUser(this.form.value).subscribe((data) => {
-            console.log('salvou');
-          });
-        }
+  createUser() {
+    this.userService.createUser(this.form.value).subscribe((data) => {
+      alert('User salvo com sucesso');
+      setTimeout(() => {
+        this.router.navigate(['user']);
+      }, 5000);
+      console.log('salvou');
+    });
+  }
+
+  getById() {
+    this.userService.getById(this.userId).subscribe((data) => {
+      this.user = data;
+      this.form.patchValue(this.user);
+      console.log('funciona', this.user);
+    });
+  }
+
+  putUser() {
+    this.userService.putUser(this.userId, this.form.value).subscribe((data) => {
+      alert('Filme atualizado com sucesso');
+      setTimeout(() => {
+        this.router.navigate(['user']);
+      }, 5000);
+      console.log('atualizou');
+    });
+  }
+
+  deleteUser() {
+    this.userService
+      .deleteUser(this.userId, this.form.value)
+      .subscribe((data) => {
+        alert('user deletado com sucesso');
+        setTimeout(() => {
+          this.router.navigate(['user']);
+        }, 3000);
+        console.log('deletado');
+      });
+  }
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

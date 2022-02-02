@@ -6,7 +6,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.generate {
+body {
   background: linear-gradient(45deg, #252425, #e00000);
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -98,19 +98,6 @@ form .input-field {
   color: #ffffff !important;
   background: linear-gradient(to left, #252425, #e00000);
 }
-
-// form input[type="submit"] {
-//     margin-top: 2rem;
-//     padding: 0.4rem;
-//     width: 100%;
-//     background: linear-gradient(to left, #252425, #e00000);
-//     cursor: pointer;
-//     color: white;
-//     font-size: 0.9rem;
-//     font-weight: 300;
-//     border-radius: 4px;
-//     transition: all 0.3s ease;
-// }
 
 form input[type="submit"]:hover {
   letter-spacing: 0.5px;
